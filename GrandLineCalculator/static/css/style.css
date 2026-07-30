@@ -1,3 +1,5 @@
+
+
 *{
     margin:0;
     padding:0;
@@ -10,17 +12,154 @@ body{
 
     min-height:100vh;
 
-    background:
-    linear-gradient(
-    135deg,
-    #021B3A,
-    #063970,
-    #0B5FA5);
+    overflow:hidden;
 
     color:white;
 
-    overflow:hidden;
+    position:relative;
 }
+
+
+/* OCEAN BACKGROUND */
+
+
+.ocean{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+    -45deg,
+    #021B3A,
+    #063970,
+    #0B5FA5,
+    #1CA7EC);
+
+    background-size:400% 400%;
+
+    animation:oceanMove 15s ease infinite;
+
+    z-index:-5;
+}
+
+
+
+@keyframes oceanMove{
+
+    0%{
+
+        background-position:0% 50%;
+    }
+
+    50%{
+
+        background-position:100% 50%;
+    }
+
+    100%{
+
+        background-position:0% 50%;
+    }
+
+}
+
+
+/* SUN GLOW */
+
+
+.sun-glow{
+
+    position:absolute;
+
+    width:500px;
+
+    height:500px;
+
+    border-radius:50%;
+
+    background:rgba(255,214,102,.20);
+
+    filter:blur(120px);
+
+    top:-150px;
+
+    right:-120px;
+
+    animation:floatGlow 8s ease-in-out infinite;
+
+    z-index:-4;
+}
+
+@keyframes floatGlow{
+
+    0%,100%{
+
+        transform:translateY(0px);
+    }
+
+    50%{
+
+        transform:translateY(30px);
+    }
+
+}
+
+
+/* WAVES */
+
+
+.wave{
+
+    position:absolute;
+
+    left:0;
+
+    width:200%;
+
+    height:220px;
+
+    border-radius:45%;
+
+    background:rgba(255,255,255,.08);
+
+    animation:waveMove 14s linear infinite;
+
+}
+
+.wave1{
+
+    bottom:-120px;
+
+    z-index:-3;
+}
+
+.wave2{
+
+    bottom:-160px;
+
+    opacity:.5;
+
+    animation-duration:20s;
+
+    z-index:-2;
+}
+
+@keyframes waveMove{
+
+    from{
+
+        transform:translateX(0);
+    }
+
+    to{
+
+        transform:translateX(-50%);
+    }
+
+}
+
 
 .hero{
 
@@ -35,25 +174,29 @@ body{
     position:relative;
 }
 
+
+
 .overlay{
 
     position:absolute;
 
-    width:100%;
-    height:100%;
+    inset:0;
 
-    background:
-    rgba(0,0,0,.25);
+    background:rgba(0,0,0,.20);
 }
+
+
 
 .hero-content{
 
     position:relative;
 
-    text-align:center;
-
     z-index:2;
+
+    text-align:center;
 }
+
+
 
 .logo{
 
@@ -62,14 +205,20 @@ body{
     margin-bottom:20px;
 }
 
+
+
 h1{
 
-    font-size:60px;
+    font-size:64px;
 
     color:#FFD166;
 
     margin-bottom:15px;
+
+    text-shadow:0 0 25px rgba(255,209,102,.4);
 }
+
+
 
 p{
 
@@ -77,8 +226,10 @@ p{
 
     margin-bottom:40px;
 
-    color:#F1F5F9;
+    color:#F5F5F5;
 }
+
+
 
 button{
 
@@ -88,15 +239,15 @@ button{
 
     border-radius:50px;
 
-    font-size:20px;
-
-    cursor:pointer;
-
     background:#FFD166;
 
     color:#021B3A;
 
+    font-size:20px;
+
     font-weight:bold;
+
+    cursor:pointer;
 
     transition:.3s;
 }
@@ -105,5 +256,5 @@ button:hover{
 
     transform:translateY(-4px);
 
-    box-shadow:0 0 25px #FFD166;
+    box-shadow:0 0 30px rgba(255,209,102,.8);
 }
