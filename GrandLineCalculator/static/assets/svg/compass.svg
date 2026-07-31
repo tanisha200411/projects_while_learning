@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 500 500">
+
+    <!-- Outer Circle -->
+    <circle
+        cx="250"
+        cy="250"
+        r="200"
+        fill="none"
+        stroke="#FFD166"
+        stroke-width="4"/>
+
+    <!-- Inner Circle -->
+    <circle
+        cx="250"
+        cy="250"
+        r="170"
+        fill="none"
+        stroke="#FFD166"
+        stroke-width="2"/>
+
+    <!-- Vertical Line -->
+    <line
+        x1="250"
+        y1="50"
+        x2="250"
+        y2="450"
+        stroke="#FFD166"
+        stroke-width="3"/>
+
+    <!-- Horizontal Line -->
+    <line
+        x1="50"
+        y1="250"
+        x2="450"
+        y2="250"
+        stroke="#FFD166"
+        stroke-width="3"/>
+
+    <!-- Diagonal 1 -->
+    <line
+        x1="100"
+        y1="100"
+        x2="400"
+        y2="400"
+        stroke="#FFD166"
+        stroke-width="2"/>
+
+    <!-- Diagonal 2 -->
+    <line
+        x1="400"
+        y1="100"
+        x2="100"
+        y2="400"
+        stroke="#FFD166"
+        stroke-width="2"/>
+
+    <!-- North Pointer -->
+    <polygon
+        points="250,70 235,250 265,250"
+        fill="#FFD166"/>
+
+    <!-- South Pointer -->
+    <polygon
+        points="250,430 235,250 265,250"
+        fill="#FFD166"/>
+
+    <!-- East Pointer -->
+    <polygon
+        points="430,250 250,235 250,265"
+        fill="#FFD166"/>
+
+    <!-- West Pointer -->
+    <polygon
+        points="70,250 250,235 250,265"
+        fill="#FFD166"/>
+
+    <!-- Center Circle -->
+    <circle
+        cx="250"
+        cy="250"
+        r="12"
+        fill="#FFD166"/>
+
+    <!-- Direction Labels -->
+    <text
+        x="250"
+        y="30"
+        text-anchor="middle"
+        font-size="24"
+        fill="#FFD166"
+        font-family="Arial">
+        N
+    </text>
+
+    <text
+        x="250"
+        y="485"
+        text-anchor="middle"
+        font-size="24"
+        fill="#FFD166"
+        font-family="Arial">
+        S
+    </text>
+
+    <text
+        x="470"
+        y="258"
+        text-anchor="middle"
+        font-size="24"
+        fill="#FFD166"
+        font-family="Arial">
+        E
+    </text>
+
+    <text
+        x="30"
+        y="258"
+        text-anchor="middle"
+        font-size="24"
+        fill="#FFD166"
+        font-family="Arial">
+        W
+    </text>
+
+</svg>
