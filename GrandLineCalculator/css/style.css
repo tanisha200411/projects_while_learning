@@ -1,0 +1,213 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+
+
+body{
+
+    background:#001219;
+    color:white;
+
+}
+
+
+
+/* NAVBAR */
+
+
+header{
+
+    background:#000814;
+    padding:20px;
+
+}
+
+
+
+nav{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+
+
+.logo{
+
+    color:#fca311;
+    font-size:30px;
+
+}
+
+
+
+ul{
+
+    display:flex;
+    gap:30px;
+    list-style:none;
+
+}
+
+
+
+a{
+
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+
+}
+
+
+
+a:hover{
+
+    color:#fca311;
+
+}
+
+
+
+/* HERO */
+
+
+.hero{
+
+height:90vh;
+
+background:
+linear-gradient(
+rgba(0,0,0,.5),
+rgba(0,0,0,.8)
+),
+url("../assets/images/ocean.jpg");
+
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+text-align:center;
+
+
+}
+
+
+
+.hero-content h2{
+
+font-size:60px;
+color:#fca311;
+
+}
+
+
+
+.hero-content p{
+
+font-size:22px;
+margin:20px;
+
+}
+
+
+
+button{
+
+padding:15px 35px;
+border:none;
+
+background:#fca311;
+
+font-size:18px;
+
+border-radius:30px;
+
+cursor:pointer;
+
+}
+
+
+
+button:hover{
+
+background:white;
+
+}
+
+
+
+/* CHARACTERS */
+
+
+.characters{
+
+padding:50px;
+text-align:center;
+
+}
+
+
+
+.characters h2{
+
+font-size:40px;
+color:#fca311;
+
+}
+
+
+
+.cards{
+
+display:flex;
+justify-content:center;
+gap:30px;
+margin-top:40px;
+
+}
+
+
+
+.card{
+
+background:#003049;
+
+padding:30px;
+
+width:250px;
+
+border-radius:20px;
+
+transition:.3s;
+
+}
+
+
+
+.card:hover{
+
+transform:translateY(-15px);
+
+background:#005f73;
+
+}
+
+
+
+.card h3{
+
+color:#fca311;
+margin-bottom:15px;
+
+}
