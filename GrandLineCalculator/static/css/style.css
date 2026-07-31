@@ -66,7 +66,6 @@ body{
 }
 
 
-/* SUN GLOW */
 
 
 .sun-glow{
@@ -107,7 +106,138 @@ body{
 }
 
 
-/* WAVES */
+
+/* CLOUDS */
+
+
+.cloud{
+
+    position:absolute;
+
+    background:rgba(255,255,255,.18);
+
+    border-radius:100px;
+
+    filter:blur(2px);
+
+    animation:drift linear infinite;
+}
+
+.cloud::before,
+.cloud::after{
+
+    content:"";
+
+    position:absolute;
+
+    background:inherit;
+
+    border-radius:50%;
+}
+
+.cloud::before{
+
+    width:70px;
+    height:70px;
+
+    top:-35px;
+    left:20px;
+}
+
+.cloud::after{
+
+    width:90px;
+    height:90px;
+
+    top:-45px;
+    right:20px;
+}
+
+/* Individual Clouds */
+
+.cloud1{
+
+    width:180px;
+    height:60px;
+
+    top:8%;
+    left:-220px;
+
+    animation-duration:45s;
+}
+
+.cloud2{
+
+    width:140px;
+    height:50px;
+
+    top:18%;
+    left:-180px;
+
+    animation-duration:35s;
+}
+
+.cloud3{
+
+    width:220px;
+    height:70px;
+
+    top:28%;
+
+    left:-260px;
+
+    animation-duration:60s;
+}
+
+.cloud4{
+
+    width:160px;
+    height:55px;
+
+    top:12%;
+
+    left:-200px;
+
+    animation-duration:50s;
+}
+
+.cloud5{
+
+    width:130px;
+    height:45px;
+
+    top:35%;
+
+    left:-180px;
+
+    animation-duration:38s;
+}
+
+.cloud6{
+
+    width:190px;
+    height:60px;
+
+    top:24%;
+
+    left:-240px;
+
+    animation-duration:55s;
+}
+
+@keyframes drift{
+
+    from{
+
+        transform:translateX(0);
+    }
+
+    to{
+
+        transform:translateX(calc(100vw + 500px));
+    }
+
+}
 
 
 .wave{
