@@ -240,6 +240,154 @@ body{
 }
 
 
+/* ============================= */
+/* PARTICLES */
+/* ============================= */
+
+.particles{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-1;
+
+}
+
+.particles span{
+
+    position:absolute;
+
+    display:block;
+
+    width:6px;
+
+    height:6px;
+
+    background:white;
+
+    border-radius:50%;
+
+    opacity:.5;
+
+    animation:
+        sparkle 6s linear infinite,
+        twinkle 3s ease-in-out infinite;
+
+    box-shadow:
+        0 0 8px white,
+        0 0 16px #8fd3ff;
+
+}
+
+/* Random Positions */
+
+.particles span:nth-child(1){top:8%;left:12%;}
+.particles span:nth-child(2){top:18%;left:28%;}
+.particles span:nth-child(3){top:14%;left:74%;}
+.particles span:nth-child(4){top:30%;left:58%;}
+.particles span:nth-child(5){top:44%;left:18%;}
+
+.particles span:nth-child(6){top:52%;left:84%;}
+.particles span:nth-child(7){top:60%;left:42%;}
+.particles span:nth-child(8){top:70%;left:14%;}
+.particles span:nth-child(9){top:76%;left:66%;}
+.particles span:nth-child(10){top:82%;left:38%;}
+
+.particles span:nth-child(11){top:12%;left:92%;}
+.particles span:nth-child(12){top:22%;left:6%;}
+.particles span:nth-child(13){top:38%;left:48%;}
+.particles span:nth-child(14){top:56%;left:26%;}
+.particles span:nth-child(15){top:66%;left:90%;}
+
+.particles span:nth-child(16){top:72%;left:52%;}
+.particles span:nth-child(17){top:46%;left:72%;}
+.particles span:nth-child(18){top:24%;left:44%;}
+.particles span:nth-child(19){top:10%;left:56%;}
+.particles span:nth-child(20){top:84%;left:78%;}
+
+@keyframes sparkle{
+
+    0%{
+
+        transform:
+        translateY(0px)
+        scale(.8);
+
+    }
+
+    50%{
+
+        transform:
+        translateY(-18px)
+        scale(1.2);
+
+    }
+
+    100%{
+
+        transform:
+        translateY(0px)
+        scale(.8);
+
+    }
+
+}
+
+@keyframes twinkle{
+
+    0%{
+
+        opacity:.2;
+
+    }
+
+    50%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        opacity:.2;
+
+    }
+
+}
+
+/* Different Sizes */
+
+.particles span:nth-child(3),
+.particles span:nth-child(8),
+.particles span:nth-child(14){
+    width:10px;
+    height:10px;
+}
+
+.particles span:nth-child(5),
+.particles span:nth-child(11),
+.particles span:nth-child(19){
+    width:4px;
+    height:4px;
+}
+
+.particles span:nth-child(2),
+.particles span:nth-child(9),
+.particles span:nth-child(17){
+    animation-duration:8s,4s;
+}
+
+.particles span:nth-child(6),
+.particles span:nth-child(13),
+.particles span:nth-child(20){
+    animation-duration:5s,2s;
+}
+
+
+
 .wave{
 
     position:absolute;
