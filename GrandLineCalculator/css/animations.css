@@ -1,28 +1,400 @@
-.particle{
+/*=========================================================
+                ANIMATIONS.CSS
+=========================================================*/
 
-position:absolute;
+/*=========================
+        FADE IN
+==========================*/
 
-bottom:-20px;
+.fade-up{
 
-width:4px;
+    opacity:0;
 
-height:4px;
+    transform:translateY(60px);
 
-background:#ffffff;
-
-border-radius:50%;
-
-opacity:.6;
-
-animation:floatUp linear infinite;
+    transition:1s ease;
 
 }
 
-@keyframes floatUp{
+.fade-up.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+/*=========================
+        FADE LEFT
+==========================*/
+
+.fade-left{
+
+    opacity:0;
+
+    transform:translateX(-70px);
+
+    transition:1s ease;
+
+}
+
+.fade-left.show{
+
+    opacity:1;
+
+    transform:translateX(0);
+
+}
+
+/*=========================
+        FADE RIGHT
+==========================*/
+
+.fade-right{
+
+    opacity:0;
+
+    transform:translateX(70px);
+
+    transition:1s ease;
+
+}
+
+.fade-right.show{
+
+    opacity:1;
+
+    transform:translateX(0);
+
+}
+
+/*=========================
+       ZOOM
+==========================*/
+
+.zoom{
+
+    opacity:0;
+
+    transform:scale(.8);
+
+    transition:.8s ease;
+
+}
+
+.zoom.show{
+
+    opacity:1;
+
+    transform:scale(1);
+
+}
+
+/*=========================
+     FLOATING OBJECTS
+==========================*/
+
+.float{
+
+    animation:float 6s ease-in-out infinite;
+
+}
+
+@keyframes float{
 
 0%{
 
 transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-15px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+/*=========================
+       ROTATE
+==========================*/
+
+.rotate{
+
+animation:rotate360 25s linear infinite;
+
+}
+
+@keyframes rotate360{
+
+from{
+
+transform:rotate(0deg);
+
+}
+
+to{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+/*=========================
+      SPARKLE
+==========================*/
+
+.sparkle{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.sparkle::before{
+
+content:"";
+
+position:absolute;
+
+top:-100%;
+
+left:-50%;
+
+width:60px;
+
+height:300%;
+
+background:
+
+rgba(255,255,255,.35);
+
+transform:rotate(25deg);
+
+animation:sparkle 4s infinite;
+
+}
+
+@keyframes sparkle{
+
+0%{
+
+left:-60%;
+
+}
+
+100%{
+
+left:160%;
+
+}
+
+}
+
+/*=========================
+        PULSE
+==========================*/
+
+.pulse{
+
+animation:pulse 2s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.08);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+/*=========================
+     BUTTON GLOW
+==========================*/
+
+.glow{
+
+box-shadow:
+
+0 0 20px rgba(252,163,17,.5);
+
+animation:glow 2.5s infinite alternate;
+
+}
+
+@keyframes glow{
+
+from{
+
+box-shadow:
+
+0 0 15px rgba(252,163,17,.35);
+
+}
+
+to{
+
+box-shadow:
+
+0 0 40px rgba(252,163,17,.75);
+
+}
+
+}
+
+/*=========================
+       BOUNCE
+==========================*/
+
+.bounce{
+
+animation:bounce 2s infinite;
+
+}
+
+@keyframes bounce{
+
+0%,20%,50%,80%,100%{
+
+transform:translateY(0);
+
+}
+
+40%{
+
+transform:translateY(-12px);
+
+}
+
+60%{
+
+transform:translateY(-6px);
+
+}
+
+}
+
+/*=========================
+      STAR EFFECT
+==========================*/
+
+.stars{
+
+position:absolute;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+overflow:hidden;
+
+pointer-events:none;
+
+}
+
+.star{
+
+position:absolute;
+
+width:3px;
+
+height:3px;
+
+background:white;
+
+border-radius:50%;
+
+animation:twinkle 3s infinite;
+
+}
+
+@keyframes twinkle{
+
+0%{
+
+opacity:.2;
+
+transform:scale(.6);
+
+}
+
+50%{
+
+opacity:1;
+
+transform:scale(1.5);
+
+}
+
+100%{
+
+opacity:.2;
+
+transform:scale(.6);
+
+}
+
+}
+
+/*=========================
+      PARTICLES
+==========================*/
+
+.particle{
+
+position:absolute;
+
+width:6px;
+
+height:6px;
+
+background:#FCA311;
+
+border-radius:50%;
+
+opacity:.5;
+
+animation:particleFloat linear infinite;
+
+}
+
+@keyframes particleFloat{
+
+0%{
+
+transform:
+
+translateY(100vh)
+
+translateX(0);
 
 opacity:0;
 
@@ -30,13 +402,23 @@ opacity:0;
 
 20%{
 
-opacity:1;
+opacity:.6;
+
+}
+
+80%{
+
+opacity:.6;
 
 }
 
 100%{
 
-transform:translateY(-100vh);
+transform:
+
+translateY(-100px)
+
+translateX(120px);
 
 opacity:0;
 
@@ -44,20 +426,120 @@ opacity:0;
 
 }
 
-.hidden{
+/*=========================
+      WAVES
+==========================*/
 
-opacity:0;
+.wave-layer{
 
-transform:translateY(80px);
+position:absolute;
 
-transition:1s;
+bottom:0;
+
+left:0;
+
+width:300%;
+
+height:170px;
+
+background-repeat:repeat-x;
+
+animation:waveFlow 12s linear infinite;
+
+opacity:.7;
 
 }
 
-.show{
+.wave-layer:nth-child(2){
 
-opacity:1;
+animation-duration:18s;
 
-transform:translateY(0);
+opacity:.45;
+
+}
+
+.wave-layer:nth-child(3){
+
+animation-duration:24s;
+
+opacity:.25;
+
+}
+
+@keyframes waveFlow{
+
+0%{
+
+transform:translateX(0);
+
+}
+
+100%{
+
+transform:translateX(-50%);
+
+}
+
+}
+
+/*=========================
+      HOVER SCALE
+==========================*/
+
+.hover-scale{
+
+transition:.35s;
+
+}
+
+.hover-scale:hover{
+
+transform:scale(1.05);
+
+}
+
+/*=========================
+     TEXT SHINE
+==========================*/
+
+.shine{
+
+background:
+
+linear-gradient(
+
+90deg,
+
+#ffffff,
+
+#FCA311,
+
+#ffffff
+
+);
+
+background-size:200%;
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+animation:shine 5s linear infinite;
+
+}
+
+@keyframes shine{
+
+0%{
+
+background-position:-200%;
+
+}
+
+100%{
+
+background-position:200%;
+
+}
 
 }
