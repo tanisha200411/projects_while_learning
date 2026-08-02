@@ -1,0 +1,92 @@
+/* =======================================================
+   GRAND LINE ADVENTURE
+   VARIABLES.CSS
+=======================================================*/
+
+:root{
+
+    /* Colors */
+
+    --primary:#FCA311;
+    --secondary:#003049;
+    --accent:#FFB703;
+
+    --dark:#001219;
+    --dark-light:#06202B;
+
+    --white:#FFFFFF;
+    --text:#E9ECEF;
+
+    --card:rgba(255,255,255,.08);
+
+    --glass:rgba(255,255,255,.10);
+
+    --border:rgba(255,255,255,.15);
+
+
+    /* Shadows */
+
+    --shadow-small:0 5px 15px rgba(0,0,0,.25);
+
+    --shadow-medium:0 10px 25px rgba(0,0,0,.35);
+
+    --shadow-large:0 20px 45px rgba(0,0,0,.45);
+
+    --gold-glow:0 0 25px rgba(252,163,17,.6);
+
+
+    /* Radius */
+
+    --radius-sm:10px;
+    --radius-md:18px;
+    --radius-lg:28px;
+    --radius-round:50px;
+
+
+    /* Transition */
+
+    --transition-fast:.25s ease;
+
+    --transition:.35s ease;
+
+    --transition-slow:.6s ease;
+
+
+    /* Font */
+
+    --font:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+
+
+    /* Navbar */
+
+    --navbar-height:80px;
+
+
+    /* Hero */
+
+    --hero-height:100vh;
+
+
+    /* Section */
+
+    --section-padding:100px;
+
+
+    /* Card */
+
+    --card-width:300px;
+
+
+    /* Z Index */
+
+    --z-loader:99999;
+
+    --z-navbar:999;
+
+    --z-overlay:2;
+
+    --z-content:10;
+
+    --z-particles:1;
+
+}

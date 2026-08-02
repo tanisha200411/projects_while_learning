@@ -1,0 +1,449 @@
+/*=========================================================
+                    HERO SECTION
+=========================================================*/
+
+.hero{
+
+    position:relative;
+
+    width:100%;
+
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.55)),
+    url("../assets/image/backgrounds/hero-bg.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-attachment:fixed;
+
+}
+
+/*======================================
+            DARK OVERLAY
+=======================================*/
+
+.overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(0,18,25,.15),
+        rgba(0,18,25,.45),
+        rgba(0,18,25,.85)
+    );
+
+    z-index:1;
+
+}
+
+/*======================================
+            HERO CONTENT
+=======================================*/
+
+.hero-content{
+
+    position:relative;
+
+    z-index:10;
+
+    width:90%;
+
+    max-width:900px;
+
+    animation:fadeUp 1.3s ease;
+
+}
+
+.hero-content h1{
+
+    font-size:5rem;
+
+    color:white;
+
+    font-weight:800;
+
+    line-height:1.2;
+
+    margin-bottom:25px;
+
+    text-shadow:
+    0 0 20px rgba(0,0,0,.5),
+    0 0 35px rgba(252,163,17,.35);
+
+}
+
+.hero-content p{
+
+    font-size:1.3rem;
+
+    color:#f1f1f1;
+
+    margin-bottom:45px;
+
+}
+
+/*======================================
+            BUTTON
+=======================================*/
+
+.start-btn{
+
+    padding:18px 45px;
+
+    font-size:18px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:#FCA311;
+
+    color:#001219;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:
+    0 0 25px rgba(252,163,17,.5);
+
+}
+
+.start-btn:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:
+    0 10px 30px rgba(252,163,17,.65);
+
+    background:white;
+
+}
+
+/*======================================
+             SUN
+=======================================
+
+.sun{
+
+    position:absolute;
+
+    top:70px;
+
+    right:120px;
+
+    width:220px;
+
+    height:220px;
+
+    border-radius:50%;
+
+    background:radial-gradient(circle,#FFD166,#FDB813,#FCA311);
+
+    filter:blur(6px);
+
+    opacity:.85;
+
+    animation:sunPulse 6s infinite ease-in-out;
+
+}
+*/
+/*======================================
+          COMPASS
+=======================================*/
+
+.compass{
+
+    position:absolute;
+
+    width:600px;
+
+    height:600px;
+
+    background:url("../assets/image/ui/compass.png");
+
+    background-size:contain;
+
+    background-repeat:no-repeat;
+
+    background-position:center;
+
+    opacity:.9;
+
+    animation:rotateCompass 60s linear infinite;
+
+}
+
+/*======================================
+            CLOUDS
+=======================================*/
+
+.cloud{
+
+    position:absolute;
+
+    background:url("../assets/image/backgrounds/clouds.png");
+
+    background-size:contain;
+
+    background-repeat:no-repeat;
+
+    opacity:.45;
+
+}
+
+.cloud1{
+
+    width:340px;
+
+    height:170px;
+
+    top:80px;
+
+    left:-400px;
+
+    animation:cloudMove1 65s linear infinite;
+
+}
+
+.cloud2{
+
+    width:260px;
+
+    height:130px;
+
+    top:100px;
+
+    left:-300px;
+
+    animation:cloudMove2 45s linear infinite;
+
+}
+
+/*======================================
+             WAVES
+=======================================
+
+.waves{
+
+    position:absolute;
+
+    left:0;
+
+    bottom:0;
+
+    width:400%;
+
+    height:180px;
+
+    background:url("../assets/image/ui/wave.png");
+
+    background-repeat:repeat-x;
+
+    background-size:contain;
+
+    animation:waveMove 20s linear infinite;
+
+}
+*/
+/*======================================
+           ANIMATIONS
+=======================================*/
+
+@keyframes fadeUp{
+
+0%{
+
+opacity:0;
+
+transform:translateY(70px);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes rotateCompass{
+
+from{
+
+transform:rotate(0deg);
+
+}
+
+to{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+@keyframes waveMove{
+
+0%{
+
+transform:translateX(0);
+
+}
+
+100%{
+
+transform:translateX(-50%);
+
+}
+
+}
+
+@keyframes cloudMove1{
+
+0%{
+
+transform:translateX(0);
+
+}
+
+100%{
+
+transform:translateX(1900px);
+
+}
+
+}
+
+@keyframes cloudMove2{
+
+0%{
+
+transform:translateX(0);
+
+}
+
+100%{
+
+transform:translateX(1800px);
+
+}
+
+}
+
+@keyframes sunPulse{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.08);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+/*======================================
+           RESPONSIVE
+=======================================*/
+
+@media(max-width:992px){
+
+.hero-content h1{
+
+font-size:3.7rem;
+
+}
+
+.hero-content p{
+
+font-size:1.1rem;
+
+}
+
+.sun{
+
+width:170px;
+
+height:170px;
+
+}
+
+.compass{
+
+width:450px;
+
+height:450px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.hero-content h1{
+
+font-size:2.7rem;
+
+}
+
+.hero-content p{
+
+font-size:1rem;
+
+}
+
+.start-btn{
+
+padding:15px 35px;
+
+}
+
+.sun{
+
+display:none;
+
+}
+
+.compass{
+
+width:320px;
+
+height:320px;
+
+}
+
+}

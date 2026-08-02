@@ -1,0 +1,232 @@
+/*=========================================================
+                NAVIGATION BAR
+=========================================================*/
+
+header{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    height:80px;
+
+    z-index:9999;
+
+    background:rgba(0,18,25,.45);
+
+    backdrop-filter:blur(18px);
+
+    transition:.4s;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+header.scrolled{
+
+    background:#001219;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.45);
+
+}
+
+nav{
+
+    width:90%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    height:80px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    color:#FCA311;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.logo:hover{
+
+    transform:scale(1.05);
+
+    text-shadow:0 0 20px #FCA311;
+
+}
+
+nav ul{
+
+    display:flex;
+
+    list-style:none;
+
+    gap:40px;
+
+}
+
+nav ul li{
+
+    position:relative;
+
+}
+
+nav ul li a{
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+nav ul li a:hover{
+
+    color:#FCA311;
+
+}
+
+nav ul li a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:3px;
+
+    background:#FCA311;
+
+    transition:.35s;
+
+    border-radius:50px;
+
+}
+
+nav ul li:hover a::after{
+
+    width:100%;
+
+}
+
+/*=========================
+      MOBILE BUTTON
+==========================*/
+
+.menu-btn{
+
+    display:none;
+
+    font-size:32px;
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+/*=========================
+     RESPONSIVE
+==========================*/
+
+@media(max-width:950px){
+
+nav{
+
+width:95%;
+
+}
+
+nav ul{
+
+gap:20px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.menu-btn{
+
+display:block;
+
+}
+
+nav ul{
+
+position:fixed;
+
+top:80px;
+
+right:-100%;
+
+width:280px;
+
+height:calc(100vh - 80px);
+
+background:#001219;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:flex-start;
+
+align-items:center;
+
+padding-top:50px;
+
+gap:35px;
+
+transition:.45s;
+
+border-left:1px solid rgba(255,255,255,.08);
+
+}
+
+nav ul.active{
+
+right:0;
+
+}
+
+nav ul li a{
+
+font-size:22px;
+
+}
+
+}
