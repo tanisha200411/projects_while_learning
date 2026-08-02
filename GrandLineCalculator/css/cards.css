@@ -1,0 +1,367 @@
+/*=========================================================
+                STRAW HAT CREW CARDS
+=========================================================*/
+
+.characters{
+
+    position:relative;
+
+    background:
+    linear-gradient(
+        180deg,
+        #001219 0%,
+        #02212d 100%
+    );
+
+    overflow:hidden;
+
+}
+
+.characters h2{
+
+    text-align:center;
+
+    font-size:3.2rem;
+
+    color:#FCA311;
+
+    margin-bottom:70px;
+
+    text-shadow:0 0 20px rgba(252,163,17,.35);
+
+}
+
+/*==========================
+        GRID
+==========================*/
+
+.cards{
+
+    width:90%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:40px;
+
+}
+
+/*==========================
+        CARD
+==========================*/
+
+.card{
+
+    position:relative;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    transition:.45s;
+
+    cursor:pointer;
+
+    transform-style:preserve-3d;
+
+    box-shadow:
+    0 12px 30px rgba(0,0,0,.30);
+
+}
+
+.card:hover{
+
+    transform:
+    translateY(-18px)
+    scale(1.03);
+
+    box-shadow:
+
+    0 20px 45px rgba(0,0,0,.45),
+
+    0 0 30px rgba(252,163,17,.35);
+
+}
+
+/*==========================
+      GOLD BORDER
+==========================*/
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    padding:2px;
+
+    border-radius:25px;
+
+    background:
+    linear-gradient(
+        45deg,
+        transparent,
+        #FCA311,
+        transparent
+    );
+
+    -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+
+            mask-composite:exclude;
+
+    opacity:0;
+
+    transition:.4s;
+
+}
+
+.card:hover::before{
+
+    opacity:1;
+
+}
+
+/*==========================
+       IMAGE
+==========================*/
+
+.card img{
+
+    width:100%;
+
+    height:340px;
+
+    object-fit:cover;
+
+    transition:.5s;
+
+}
+
+.card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+/*==========================
+       CONTENT
+==========================*/
+
+.card h3{
+
+    margin-top:20px;
+
+    color:#FCA311;
+
+    font-size:1.6rem;
+
+    text-align:center;
+
+}
+
+.card p{
+
+    text-align:center;
+
+    color:#ddd;
+
+    margin-top:10px;
+
+    font-size:1rem;
+
+}
+
+.card span{
+
+    display:block;
+
+    width:max-content;
+
+    margin:20px auto 30px;
+
+    background:#FCA311;
+
+    color:#001219;
+
+    padding:10px 20px;
+
+    border-radius:40px;
+
+    font-weight:700;
+
+}
+
+/*==========================
+     SHINE EFFECT
+==========================*/
+
+.card::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-120%;
+
+    left:-40%;
+
+    width:80px;
+
+    height:220%;
+
+    background:
+
+    rgba(255,255,255,.35);
+
+    transform:rotate(25deg);
+
+    transition:.8s;
+
+}
+
+.card:hover::after{
+
+    left:130%;
+
+}
+
+/*==========================
+     IMAGE OVERLAY
+==========================*/
+
+.card .overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+
+    transparent,
+
+    rgba(0,18,25,.65)
+
+    );
+
+    pointer-events:none;
+
+}
+
+/*==========================
+     FLOAT ANIMATION
+==========================*/
+
+.card:nth-child(odd){
+
+    animation:float1 5s ease-in-out infinite;
+
+}
+
+.card:nth-child(even){
+
+    animation:float2 6s ease-in-out infinite;
+
+}
+
+/*==========================
+      KEYFRAMES
+==========================*/
+
+@keyframes float1{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-8px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes float2{
+
+0%{
+
+transform:translateY(-8px);
+
+}
+
+50%{
+
+transform:translateY(0);
+
+}
+
+100%{
+
+transform:translateY(-8px);
+
+}
+
+}
+
+/*==========================
+      RESPONSIVE
+==========================*/
+
+@media(max-width:900px){
+
+.cards{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:650px){
+
+.cards{
+
+grid-template-columns:1fr;
+
+}
+
+.characters h2{
+
+font-size:2.5rem;
+
+}
+
+.card img{
+
+height:300px;
+
+}
+
+}
