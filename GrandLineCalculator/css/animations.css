@@ -543,3 +543,258 @@ background-position:200%;
 }
 
 }
+
+/*=========================================================
+                PARTICLE SYSTEM
+=========================================================*/
+
+.particles{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:2;
+
+}
+
+.particle{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:rgba(252,163,17,.7);
+
+    box-shadow:
+    0 0 10px rgba(252,163,17,.8);
+
+    animation:particleFloat linear infinite;
+
+}
+
+@keyframes particleFloat{
+
+0%{
+
+transform:
+translateY(100vh)
+translateX(0);
+
+opacity:0;
+
+}
+
+20%{
+
+opacity:.7;
+
+}
+
+80%{
+
+opacity:.7;
+
+}
+
+100%{
+
+transform:
+translateY(-150px)
+translateX(120px);
+
+opacity:0;
+
+}
+
+}
+
+/*=========================================================
+                MOUSE GLOW
+=========================================================*/
+
+.mouse-glow{
+
+position:fixed;
+
+width:220px;
+
+height:220px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(
+
+circle,
+
+rgba(252,163,17,.18),
+
+transparent 70%
+
+);
+
+pointer-events:none;
+
+transform:
+
+translate(-50%,-50%);
+
+z-index:3;
+
+transition:
+
+left .08s linear,
+
+top .08s linear;
+
+}
+
+/*=========================================================
+                STARS
+=========================================================*/
+
+.stars{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+pointer-events:none;
+
+z-index:1;
+
+overflow:hidden;
+
+}
+
+.star{
+
+position:absolute;
+
+width:3px;
+
+height:3px;
+
+background:white;
+
+border-radius:50%;
+
+animation:
+
+twinkle 3s infinite;
+
+}
+
+@keyframes twinkle{
+
+0%{
+
+opacity:.2;
+
+transform:scale(.8);
+
+}
+
+50%{
+
+opacity:1;
+
+transform:scale(1.6);
+
+}
+
+100%{
+
+opacity:.2;
+
+transform:scale(.8);
+
+}
+
+}
+
+/*=========================================================
+            BUTTON SPARKLES
+=========================================================*/
+
+.start-btn{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.button-sparkle{
+
+position:absolute;
+
+width:8px;
+
+height:8px;
+
+border-radius:50%;
+
+background:white;
+
+box-shadow:
+
+0 0 12px white;
+
+animation:
+
+sparkleExplosion 1.2s forwards;
+
+pointer-events:none;
+
+}
+
+@keyframes sparkleExplosion{
+
+0%{
+
+transform:
+
+translate(0,0)
+
+scale(1);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:
+
+translate(
+
+calc((var(--x,0) - .5)*120px),
+
+calc((var(--y,0) - .5)*120px)
+
+)
+
+scale(0);
+
+opacity:0;
+
+}
+
+}
