@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Grand Line Adventure | Lore & Tech Stack</title>
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/cards.css">
+  <link rel="stylesheet" href="../css/calculator.css">
+  <link rel="stylesheet" href="../css/loader.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-content">
+    <div class="skull">☠</div>
+    <h1>Grand Line Archives</h1>
+    <p>Opening Project Records...</p>
+  </div>
+</div>
+
+<header>
+<nav>
+  <div class="logo">☠ Grand Line Adventure</div>
+  <div class="menu-btn">☰</div>
+  <ul>
+    <li><a href="index.html">Home & Calc</a></li>
+    <li><a href="islands.html">Islands Atlas</a></li>
+    <li><a href="characters.html">Crew Roster</a></li>
+    <li><a href="bounty.html">Bounty Calc</a></li>
+    <li><a href="devil-fruits.html">Devil Fruits</a></li>
+    <li><a href="about.html" class="active">About & Lore</a></li>
+  </ul>
+</nav>
+</header>
+
+<section style="padding-top:130px;">
+  <div class="container">
+    <h2>📜 About Grand Line Adventure</h2>
+    <p class="text-center" style="color:var(--muted); max-width:700px; margin:0 auto 40px;">An interactive One Piece pirate navigation web suite built for navigators and fans across the seas.</p>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:24px;">
+      <div class="calc-card">
+        <h3 style="color:var(--primary); margin-bottom:12px;">🚀 Tech Stack</h3>
+        <p style="color:var(--muted); font-size:0.95rem; line-height:1.7;">
+          • <strong>Frontend:</strong> HTML5, Vanilla CSS3, JavaScript (ES6+)<br>
+          • <strong>Backend:</strong> Python Flask REST APIs<br>
+          • <strong>Database:</strong> SQLite database (`database.db`)<br>
+          • <strong>Graphics & Audio:</strong> HTML5 Canvas 3D Log Pose engine & Web Audio API synthesizer
+        </p>
+      </div>
+
+      <div class="calc-card">
+        <h3 style="color:#00e5ff; margin-bottom:12px;">🧭 Log Pose Navigation Concept</h3>
+        <p style="color:var(--muted); font-size:0.95rem; line-height:1.7;">
+          Standard compasses fail in the Grand Line due to localized magnetic forces. A <strong>Log Pose</strong> is a spherical compass that records an island's magnetic signature to guide sailors to their next destination.
+        </p>
+      </div>
+
+      <div class="calc-card">
+        <h3 style="color:#ff2a5f; margin-bottom:12px;">👤 Creator & Portfolio</h3>
+        <p style="color:var(--muted); font-size:0.95rem; line-height:1.7;">
+          Created with ❤️ by <strong>Tanisha200411</strong> as a GitHub portfolio project highlighting UI/UX design, math engines, and backend API integration.
+        </p>
+      </div>
+    </div>
+
+    <div class="calc-card" style="margin-top:40px; text-align:center;">
+      <h3 style="color:var(--primary); margin-bottom:16px;"> Ready to Navigate Your Journey?</h3>
+      <a href="index.html#calculator" class="start-btn">Launch Voyage & Direction Calculator</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Grand Line Adventure — One Piece Interactive Suite</p>
+  <p>Made with ❤️ by Tanisha200411</p>
+</footer>
+
+<script src="../js/navbar.js"></script>
+<script src="../js/loader.js"></script>
+<script src="../js/cards.js"></script>
+</body>
+</html>

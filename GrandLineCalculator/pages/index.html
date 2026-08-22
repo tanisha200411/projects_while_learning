@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grand Line Voyage Calculator & Direction Finder | One Piece</title>
+  <meta name="description" content="Calculate nautical distance, voyage duration, rations, and live Log Pose compass directions between Grand Line islands in One Piece.">
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/hero.css">
+  <link rel="stylesheet" href="../css/cards.css">
+  <link rel="stylesheet" href="../css/calculator.css">
+  <link rel="stylesheet" href="../css/map.css">
+  <link rel="stylesheet" href="../css/loader.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-content">
+    <div class="skull">☠</div>
+    <h1>Grand Line Navigator</h1>
+    <p>Calculating Sea Currents & Log Pose Magnetic Signals...</p>
+  </div>
+</div>
+
+<header>
+<nav>
+  <div class="logo">☠ Grand Line Navigator</div>
+  <div class="menu-btn">☰</div>
+  <ul>
+    <li><a href="index.html" class="active">Home & Calc</a></li>
+    <li><a href="islands.html">Islands Atlas</a></li>
+    <li><a href="characters.html">Crew Roster</a></li>
+    <li><a href="bounty.html">Bounty Calc</a></li>
+    <li><a href="devil-fruits.html">Devil Fruits</a></li>
+    <li><a href="about.html">About & Lore</a></li>
+  </ul>
+</nav>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+  <div class="overlay"></div>
+  <div class="sun"></div>
+  <div class="compass"></div>
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+
+  <div class="hero-content">
+    <h1>Grand Line Navigation & Direction Calculator</h1>
+    <p>Calculate voyage distance, travel duration, food rations, and see live Log Pose magnetic bearings across the Grand Line!</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a class="start-btn" href="#calculator">Start Navigation Calculator</a>
+      <a class="btn" style="background:transparent; border:2px solid var(--primary); color:var(--primary);" href="#mapSection">View Grand Line Map</a>
+    </div>
+  </div>
+
+  <div class="waves"></div>
+</section>
+
+<!-- MAIN VOYAGE CALCULATOR & DIRECTION COMPASS SECTION -->
+<section class="calc-section" id="calculator">
+  <div class="container">
+    <h2>🗺️ Grand Line Voyage & Direction Calculator</h2>
+    <p class="text-center mb-4" style="color:var(--muted)">Select your Origin & Destination islands to calculate distance, travel time, required rations, and see live Log Pose needle direction!</p>
+
+    <div class="calc-grid">
+      <!-- Calculator Controls -->
+      <div class="calc-card">
+        <h3 class="calc-title">🧭 Voyage Parameters</h3>
+        <p class="calc-subtitle">Set your voyage variables and ship configuration</p>
+
+        <form id="voyageForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="startIsland">Origin Island</label>
+              <select id="startIsland" class="form-select"></select>
+            </div>
+            <div class="form-group">
+              <label for="destIsland">Destination Island</label>
+              <select id="destIsland" class="form-select"></select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="shipType">Pirate Vessel</label>
+              <select id="shipType" class="form-select">
+                <option value="sunny">Thousand Sunny (19 Knots - Coup de Burst)</option>
+                <option value="merry">Going Merry (11 Knots - Classic Caravel)</option>
+                <option value="oro">Oro Jackson (24 Knots - Pirate King Flagship)</option>
+                <option value="polar">Polar Tang (16 Knots - Submarine)</option>
+                <option value="marine">Marine Battleship (15 Knots)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="weatherCond">Grand Line Weather</label>
+              <select id="weatherCond" class="form-select">
+                <option value="calm">Calm Fair Winds (Normal)</option>
+                <option value="calm_belt">Calm Belt (No Wind / Sea Kings)</option>
+                <option value="aqua_laguna">Aqua Laguna / Ocean Storm</option>
+                <option value="knock_up">Knock-Up Stream (Sky Route)</option>
+                <option value="heavy_fog">Florian Triangle Fog</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="crewCount">Crew Size (Pirates)</label>
+              <input type="number" id="crewCount" class="form-control" value="9" min="1" max="100">
+            </div>
+            <div class="form-group">
+              <label for="navSkill">Navigator Mastery</label>
+              <select id="navSkill" class="form-select">
+                <option value="nami">Nami Level 100 (Grand Line Genius)</option>
+                <option value="veteran">Veteran Navigator</option>
+                <option value="beginner">Novice Pirate</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="button" id="calculateVoyageBtn" class="btn-calc">⚡ Calculate Route & Point Log Pose</button>
+        </form>
+      </div>
+
+      <!-- Live Direction Log Pose Visualizer -->
+      <div class="calc-card">
+        <h3 class="calc-title">🧭 Live Log Pose & Direction Finder</h3>
+        <p class="calc-subtitle">Real-time magnetic needle pointer & helm steering control</p>
+
+        <div class="compass-container">
+          <canvas id="compassCanvas"></canvas>
+
+          <div class="compass-readout">
+            <div class="readout-box">
+              <div class="readout-label">Target Angle</div>
+              <div class="readout-value" id="bearingReadout">0°</div>
+            </div>
+            <div class="readout-box">
+              <div class="readout-label">Cardinal Dir</div>
+              <div class="readout-value" id="cardinalReadout">N</div>
+            </div>
+            <div class="readout-box">
+              <div class="readout-label">Signal State</div>
+              <div class="readout-value" id="lockReadout">SCANNING 🌐</div>
+            </div>
+          </div>
+
+          <div class="helm-controls">
+            <button class="btn-helm" onclick="if(grandLogPose) grandLogPose.rotateHelm(-15)">↺ Steer Port (-15°)</button>
+            <button class="btn-helm" onclick="if(grandLogPose) grandLogPose.rotateHelm(15)">↻ Steer Starboard (+15°)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PIRATE SHIP MATHEMATICAL & SCIENTIFIC CALCULATOR -->
+    <div class="calc-card" id="mathCalculatorSection" style="margin-top:40px; max-width:800px; margin-left:auto; margin-right:auto;">
+      <h3 class="calc-title">🧮 Pirate Ship's Mathematical & Scientific Calculator</h3>
+      <p class="calc-subtitle">Perform exact arithmetic, trigonometry, percentages, and Berry ฿ bounty math!</p>
+
+      <div class="math-display-screen">
+        <div class="math-expr-line" id="mathExprDisplay">0</div>
+        <div class="math-res-line" id="mathResDisplay">0</div>
+      </div>
+
+      <div class="math-keypad">
+        <button class="math-key action-key" onclick="pirateMathCalc.clearAll()">C</button>
+        <button class="math-key action-key" onclick="pirateMathCalc.deleteChar()">DEL</button>
+        <button class="math-key operator" onclick="pirateMathCalc.appendChar('(')">(</button>
+        <button class="math-key operator" onclick="pirateMathCalc.appendChar(')')">)</button>
+
+        <button class="math-key operator" onclick="pirateMathCalc.appendFunction('sqrt')">√</button>
+        <button class="math-key operator" onclick="pirateMathCalc.appendFunction('sq')">x²</button>
+        <button class="math-key operator" onclick="pirateMathCalc.appendChar('%')">%</button>
+        <button class="math-key operator" onclick="pirateMathCalc.appendChar('÷')">÷</button>
+
+        <button class="math-key" onclick="pirateMathCalc.appendChar('7')">7</button>
+        <button class="math-key" onclick="pirateMathCalc.appendChar('8')">8</button>
+        <button class="math-key" onclick="pirateMathCalc.appendChar('9')">9</button>
+        <button class="math-key operator" onclick="pirateMathCalc.appendChar('×')">×</button>
+
+        <button class="math-key" onclick="pirateMathCalc.appendChar('4')">4</button>
+        <button class="math-key" onclick="pirateMathCalc.appendChar('5')">5</button>
+        <button class="math-key" onclick="pirateMathCalc.appendChar('6')">6</button>
+        <button class="math-key operator" onclick="pirateMathCalc.appendChar('-')">-</button>
+
+        <button class="math-key" onclick="pirateMathCalc.appendChar('1')">1</button>
+        <button class="math-key" onclick="pirateMathCalc.appendChar('2')">2</button>
+        <button class="math-key" onclick="pirateMathCalc.appendChar('3')">3</button>
+        <button class="math-key operator" onclick="pirateMathCalc.appendChar('+')">+</button>
+
+        <button class="math-key" onclick="pirateMathCalc.appendChar('0')">0</button>
+        <button class="math-key" onclick="pirateMathCalc.appendChar('.')">.</button>
+        <button class="math-key berry-key" onclick="pirateMathCalc.appendMultiplier('M')" title="Multiply by 1 Million (1,000,000)">฿ M</button>
+        <button class="math-key berry-key" onclick="pirateMathCalc.appendMultiplier('B')" title="Multiply by 1 Billion (1,000,000,000)">฿ B</button>
+
+        <button class="math-key equals-key" onclick="pirateMathCalc.calculate()">=</button>
+        <button class="math-key operator" onclick="pirateMathCalc.appendChar('π')">π</button>
+        <button class="math-key operator" onclick="pirateMathCalc.appendFunction('sin')">sin</button>
+      </div>
+
+      <div class="math-history-container">
+        <div class="math-history-title">📜 Recent Calculation Ledger (Click to reuse result):</div>
+        <ul class="math-history-list" id="mathHistoryList">
+          <li style="color:var(--muted); font-size:0.8rem; font-style:italic;">No calculations yet</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Voyage Results Display -->
+    <div class="results-card" id="voyageResults">
+      <div class="result-header">
+        <h3>⛵ Calculated Voyage Route Summary</h3>
+        <span class="result-badge">Log Pose Signal Locked</span>
+      </div>
+
+      <div class="result-metrics">
+        <div class="metric-item">
+          <div class="metric-val" id="resDistance">0 NM</div>
+          <div class="metric-lbl">Nautical Distance</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val" id="resLeagues">0 Leagues</div>
+          <div class="metric-lbl">Sea Leagues</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val" id="resDays">0 Days</div>
+          <div class="metric-lbl">Estimated Travel Time</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val" id="resMeat">0 kg</div>
+          <div class="metric-lbl">Meat Rations 🍖</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val" id="resWater">0 L</div>
+          <div class="metric-lbl">Fresh Water 💧</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val" id="resLockTime">Instant</div>
+          <div class="metric-lbl">Log Pose Lock Time</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val" id="resBerries">฿ 0</div>
+          <div class="metric-lbl">Estimated Voyage Budget</div>
+        </div>
+      </div>
+
+      <div class="direction-highlight">
+        <h4>Compass Steering Vector & Direction:</h4>
+        <div class="vector-text" id="resVectorText">NORTH (N 0°)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERACTIVE GRAND LINE ROUTE MAP SECTION -->
+<section class="calc-section" id="mapSection" style="background: rgba(0, 12, 20, 0.6);">
+  <div class="container">
+    <h2>🗺️ Interactive Grand Line Canvas Route Map</h2>
+    <p class="text-center mb-4" style="color:var(--muted)">Click any island on the map to inspect lore details or see mapped sea route vectors!</p>
+
+    <div class="calc-card" style="padding:16px;">
+      <div style="width:100%; overflow-x:auto;">
+        <canvas id="grandLineMapCanvas"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED ANIME LEGENDS SHOWCASE -->
+<section class="calc-section" id="featuredCharacters" style="padding-top:40px; padding-bottom:40px;">
+  <div class="container">
+    <h2>🏴‍☠️ Featured One Piece Anime Legends</h2>
+    <p class="text-center mb-4" style="color:var(--muted)">Meet the Straw Hat Pirates, Emperors of the Sea, and Legendary Marines!</p>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:20px;">
+      <div class="calc-card" style="text-align:center;">
+        <span style="font-size:2.5rem;">👑</span>
+        <h3 style="color:#ffffff; margin:8px 0 4px;">Monkey D. Luffy</h3>
+        <p style="color:#00e5ff; font-size:0.85rem; font-weight:700;">Straw Hat Captain</p>
+        <span class="result-badge" style="margin-top:10px; display:inline-block;">฿ 3,000,000,000</span>
+      </div>
+      <div class="calc-card" style="text-align:center;">
+        <span style="font-size:2.5rem;">⚔️</span>
+        <h3 style="color:#ffffff; margin:8px 0 4px;">Roronoa Zoro</h3>
+        <p style="color:#00e5ff; font-size:0.85rem; font-weight:700;">King of Hell Swordsman</p>
+        <span class="result-badge" style="margin-top:10px; display:inline-block;">฿ 1,111,000,000</span>
+      </div>
+      <div class="calc-card" style="text-align:center;">
+        <span style="font-size:2.5rem;">🔴</span>
+        <h3 style="color:#ffffff; margin:8px 0 4px;">Red-Haired Shanks</h3>
+        <p style="color:#ff2a5f; font-size:0.85rem; font-weight:700;">Emperor of the Sea (Yonko)</p>
+        <span class="result-badge" style="margin-top:10px; display:inline-block;">฿ 4,048,900,000</span>
+      </div>
+      <div class="calc-card" style="text-align:center;">
+        <span style="font-size:2.5rem;">⚓</span>
+        <h3 style="color:#ffffff; margin:8px 0 4px;">Gol D. Roger</h3>
+        <p style="color:#fca311; font-size:0.85rem; font-weight:700;">Pirate King Legend</p>
+        <span class="result-badge" style="margin-top:10px; display:inline-block;">฿ 5,564,800,000</span>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:30px;">
+      <a href="characters.html" class="start-btn">Explore All 25+ Anime Characters & Take Quiz</a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPLORE NAVIGATION CARDS -->
+<section class="explore">
+  <div class="container">
+    <h2>Explore The Grand Line Tools</h2>
+    <div class="cards">
+      <a class="card" href="islands.html"><h3>🏝️ Islands Atlas</h3><p>Climate & Lock Times</p></a>
+      <a class="card" href="characters.html"><h3>🏴‍☠️ Crew Roster</h3><p>Straw Hat Pirates</p></a>
+      <a class="card" href="bounty.html"><h3>💰 Bounty Calc</h3><p>Calculate Marine Threat</p></a>
+      <a class="card" href="devil-fruit.html"><h3>🍈 Devil Fruits</h3><p>Berry Valuations</p></a>
+      <a class="card" href="about.html"><h3>📜 Navigation Lore</h3><p>Log Pose Mechanics</p></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>☠ Grand Line Voyage Calculator & Direction Finder ☠</p>
+  <p>Created for Pirates & Navigators of the Grand Line | Made with ❤️ by Tanisha200411</p>
+</footer>
+
+<button class="audio-toggle-btn" id="audioToggleBtn" title="Toggle Sound Effects">🔊</button>
+
+<script src="../js/audio.js"></script>
+<script src="../js/navbar.js"></script>
+<script src="../js/hero.js"></script>
+<script src="../js/cards.js"></script>
+<script src="../js/compass.js"></script>
+<script src="../js/calculator.js"></script>
+<script src="../js/math-calc.js"></script>
+<script src="../js/map.js"></script>
+<script src="../js/particles.js"></script>
+<script src="../js/loader.js"></script>
+<script src="../js/main.js"></script>
+
+<script>
+document.getElementById('audioToggleBtn')?.addEventListener('click', () => {
+  const isMuted = sfx.toggleMute();
+  document.getElementById('audioToggleBtn').innerText = isMuted ? '🔇' : '🔊';
+});
+</script>
+
+</body>
+</html>

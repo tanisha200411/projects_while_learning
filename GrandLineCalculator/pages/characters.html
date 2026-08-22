@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Piece Anime Characters & Pirate Match Quiz | Grand Line Adventure</title>
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/cards.css">
+  <link rel="stylesheet" href="../css/calculator.css">
+  <link rel="stylesheet" href="../css/loader.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .crew-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .crew-card {
+      background: rgba(6, 32, 51, 0.85);
+      border: 1px solid rgba(252, 163, 17, 0.3);
+      border-radius: 18px;
+      padding: 24px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      position: relative;
+    }
+    .crew-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--primary);
+      box-shadow: 0 12px 35px rgba(252, 163, 17, 0.25);
+    }
+    .bounty-tag {
+      background: rgba(252, 163, 17, 0.15);
+      color: var(--primary);
+      font-weight: 800;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(252, 163, 17, 0.4);
+      display: inline-block;
+      margin-top: 10px;
+    }
+    .category-badge {
+      background: rgba(0, 229, 255, 0.15);
+      color: #00e5ff;
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 229, 255, 0.3);
+    }
+    .haki-badge {
+      display: inline-block;
+      background: rgba(255, 42, 95, 0.15);
+      color: #ff2a5f;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 6px;
+      margin: 2px;
+      border: 1px solid rgba(255, 42, 95, 0.3);
+    }
+    .btn-haki {
+      background: linear-gradient(135deg, rgba(255, 42, 95, 0.2), rgba(252, 163, 17, 0.2));
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.2s ease;
+    }
+    .btn-haki:hover {
+      background: var(--primary);
+      color: #000;
+    }
+    .quiz-box {
+      background: rgba(0, 18, 25, 0.9);
+      border: 1px solid rgba(0, 229, 255, 0.4);
+      border-radius: 20px;
+      padding: 32px;
+      max-width: 800px;
+      margin: 0 auto 50px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+    }
+  </style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-content">
+    <div class="skull">☠</div>
+    <h1>One Piece Anime Character Vault</h1>
+    <p>Loading 25+ Legendary Characters & Haki Powers...</p>
+  </div>
+</div>
+
+<header>
+<nav>
+  <div class="logo">☠ Grand Line Adventure</div>
+  <div class="menu-btn">☰</div>
+  <ul>
+    <li><a href="index.html">Home & Calc</a></li>
+    <li><a href="islands.html">Islands Atlas</a></li>
+    <li><a href="characters.html" class="active">Crew Roster</a></li>
+    <li><a href="bounty.html">Bounty Calc</a></li>
+    <li><a href="devil-fruits.html">Devil Fruits</a></li>
+    <li><a href="about.html">About & Lore</a></li>
+  </ul>
+</nav>
+</header>
+
+<section style="padding-top:130px;">
+  <div class="container">
+    <h2>🏴‍☠️ One Piece Anime Characters & Battle Roster</h2>
+    <p class="text-center" style="color:var(--muted); max-width:750px; margin:0 auto 24px;">Explore 25+ iconic anime legends across Straw Hats, Yonko, Marines, Warlords, Worst Generation, and Gol D. Roger's Era!</p>
+
+    <!-- Quiz Mini-Game Section -->
+    <div class="quiz-box">
+      <h3 style="color:#00e5ff; text-align:center; font-size:1.6rem; margin-bottom:8px;">⚔️ Which One Piece Pirate Are You?</h3>
+      <p style="color:var(--muted); text-align:center; font-size:0.95rem; margin-bottom:20px;">Take the 3-question pirate personality test to find your anime match!</p>
+
+      <form id="pirateQuizForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="qStyle">Preferred Combat Style</label>
+            <select id="qStyle" class="form-select">
+              <option value="brawler">Fists of Freedom / Brawler (Luffy)</option>
+              <option value="swordsman">3-Sword Style / Black Blades (Zoro)</option>
+              <option value="kicks">Flame Kicks / Martial Arts (Sanji)</option>
+              <option value="tactical">Tactical ROOM / Surgery (Law)</option>
+              <option value="haki">Conqueror's Haki Master (Shanks)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="qDream">Ultimate Pirate Dream</label>
+            <select id="qDream" class="form-select">
+              <option value="king">Become King of the Pirates!</option>
+              <option value="strongest">Become World's Greatest Swordsman</option>
+              <option value="allblue">Find the All Blue</option>
+              <option value="history">Discover Void Century History</option>
+              <option value="freedom">Sail Free Across All Oceans</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="button" id="startQuizBtn" class="btn-calc" style="max-width:300px; margin:0 auto;">✨ Reveal My Anime Match</button>
+      </form>
+
+      <!-- Quiz Result Display -->
+      <div id="quizResultBox" style="display:none; margin-top:24px; text-align:center; background:rgba(252,163,17,0.1); border:1px dashed var(--primary); padding:20px; border-radius:14px;">
+        <h4 style="color:#ffffff; font-size:1rem;">Your Pirate Persona Match:</h4>
+        <div id="quizMatchName" style="font-size:2rem; font-weight:900; color:var(--primary); margin:6px 0;">MONKEY D. LUFFY</div>
+        <p id="quizMatchQuote" style="color:var(--muted); font-style:italic;"></p>
+        <span id="quizMatchBounty" class="bounty-tag" style="margin-top:10px;">฿ 3,000,000,000</span>
+      </div>
+    </div>
+
+    <!-- Search Bar & Category Filter Buttons -->
+    <div style="max-width:600px; margin:0 auto 20px;">
+      <input type="text" id="characterSearchInput" class="form-control" placeholder="🔍 Search character by name, role, or fruit..." style="border-radius:30px; text-align:center;">
+    </div>
+
+    <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:30px;">
+      <button class="btn-helm" onclick="filterCategory('All')">All (25+)</button>
+      <button class="btn-helm" onclick="filterCategory('Straw Hats')">Straw Hats</button>
+      <button class="btn-helm" onclick="filterCategory('Yonko')">Yonko (Emperors)</button>
+      <button class="btn-helm" onclick="filterCategory('Marines')">Marines</button>
+      <button class="btn-helm" onclick="filterCategory('Warlords')">Warlords</button>
+      <button class="btn-helm" onclick="filterCategory('Worst Gen')">Worst Gen</button>
+      <button class="btn-helm" onclick="filterCategory('Legends')">Legends</button>
+    </div>
+
+    <div class="crew-grid" id="crewGrid">
+      <!-- Injected via JavaScript -->
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Grand Line Adventure — One Piece Interactive Suite</p>
+  <p>Made with ❤️ by Tanisha200411</p>
+</footer>
+
+<script src="../js/audio.js"></script>
+<script src="../js/navbar.js"></script>
+<script src="../js/loader.js"></script>
+<script src="../js/cards.js"></script>
+<script>
+let crewDataGlobal = [];
+
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const res = await fetch('/api/crew');
+    if (res.ok) {
+      crewDataGlobal = await res.json();
+    } else {
+      crewDataGlobal = await (await fetch('../data/crew.json')).json();
+    }
+  } catch (e) {
+    try {
+      crewDataGlobal = await (await fetch('../data/crew.json')).json();
+    } catch (err) {}
+  }
+
+  renderCharacters(crewDataGlobal);
+
+  // Search Input Listener
+  document.getElementById('characterSearchInput')?.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase();
+    const filtered = crewDataGlobal.filter(c => 
+      c.name.toLowerCase().includes(query) ||
+      (c.role || '').toLowerCase().includes(query) ||
+      (c.fruit || '').toLowerCase().includes(query)
+    );
+    renderCharacters(filtered);
+  });
+
+  // Quiz Listener
+  document.getElementById('startQuizBtn')?.addEventListener('click', runPirateQuiz);
+});
+
+function filterCategory(cat) {
+  if (cat === 'All') {
+    renderCharacters(crewDataGlobal);
+  } else {
+    renderCharacters(crewDataGlobal.filter(c => c.category === cat));
+  }
+}
+
+function renderCharacters(list) {
+  const grid = document.getElementById('crewGrid');
+  if (!grid) return;
+
+  grid.innerHTML = '';
+  list.forEach(c => {
+    const card = document.createElement('div');
+    card.className = 'crew-card';
+    const catLabel = c.category || 'Pirate';
+
+    let hakiBadges = "";
+    let hakiArr = typeof c.haki === 'string' ? c.haki.split(',') : (c.haki || []);
+    hakiArr.forEach(h => {
+      if (h.trim()) hakiBadges += `<span class="haki-badge">⚡ ${h.trim()}</span>`;
+    });
+
+    card.innerHTML = `
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h3 style="color:#ffffff; font-size:1.35rem;">${c.name}</h3>
+        <span class="category-badge">${catLabel}</span>
+      </div>
+      <p style="color:#00e5ff; font-weight:700; font-size:0.85rem; margin-bottom:6px;">Role: ${c.role || 'Warrior'}</p>
+      <p style="color:var(--muted); font-size:0.85rem; font-style:italic; margin-bottom:10px;">"${c.quote || ''}"</p>
+      <p style="color:#e9ecef; font-size:0.85rem;"><strong>Fruit / Ability:</strong> ${c.fruit}</p>
+      <div style="margin-top:6px;">${hakiBadges || '<span style="color:var(--muted); font-size:0.75rem;">Standard Haki</span>'}</div>
+      
+      <div style="margin-top:14px; display:flex; justify-content:space-between; align-items:center;">
+        <span class="bounty-tag">฿ ${(c.bounty || 0).toLocaleString()}</span>
+        <button class="btn-haki" onclick="triggerHakiEffect('${c.id}')">⚡ Release Haki</button>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function triggerHakiEffect(charId) {
+  if (typeof sfx !== 'undefined') {
+    if (charId === 'zoro' || charId === 'mihawk') sfx.playSwordSlash();
+    else sfx.playHakiRumble();
+  }
+}
+
+function runPirateQuiz() {
+  const style = document.getElementById('qStyle').value;
+  let matchId = 'luffy';
+
+  if (style === 'swordsman') matchId = 'zoro';
+  if (style === 'kicks') matchId = 'sanji';
+  if (style === 'tactical') matchId = 'law';
+  if (style === 'haki') matchId = 'shanks';
+
+  const match = crewDataGlobal.find(c => c.id === matchId) || crewDataGlobal[0];
+
+  document.getElementById('quizMatchName').innerText = match.name.toUpperCase();
+  document.getElementById('quizMatchQuote').innerText = `"${match.quote}"`;
+  document.getElementById('quizMatchBounty').innerText = `฿ ${(match.bounty || 0).toLocaleString()}`;
+  document.getElementById('quizResultBox').style.display = 'block';
+
+  if (typeof sfx !== 'undefined') sfx.playHakiRumble();
+}
+</script>
+</body>
+</html>

@@ -1,92 +1,74 @@
-/* =======================================================
-   GRAND LINE ADVENTURE
-   VARIABLES.CSS
-=======================================================*/
+/*==================================================
+  VARIABLES.CSS
+==================================================*/
 
 :root{
 
-    /* Colors */
+  --primary:#fca311;
+  --secondary:#14213d;
+  --background:#001219;
+  --surface:#062033;
 
-    --primary:#FCA311;
-    --secondary:#003049;
-    --accent:#FFB703;
+  --white:#ffffff;
+  --text:#e9ecef;
+  --muted:#b8c2cc;
 
-    --dark:#001219;
-    --dark-light:#06202B;
+  --success:#2ecc71;
+  --danger:#e63946;
 
-    --white:#FFFFFF;
-    --text:#E9ECEF;
+  --shadow:0 12px 30px rgba(0,0,0,.35);
+  --radius:18px;
 
-    --card:rgba(255,255,255,.08);
+  --navbar-height:80px;
 
-    --glass:rgba(255,255,255,.10);
+  --transition-fast:.25s ease;
+  --transition:.35s ease;
+  --transition-slow:.6s ease;
 
-    --border:rgba(255,255,255,.15);
+  --font-main:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
 
+  --hero-gradient:
+      linear-gradient(
+      180deg,
+      #0b3d60 0%,
+      #08304f 40%,
+      #001219 100%);
 
-    /* Shadows */
+}
 
-    --shadow-small:0 5px 15px rgba(0,0,0,.25);
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    --shadow-medium:0 10px 25px rgba(0,0,0,.35);
+html{
+  scroll-behavior:smooth;
+}
 
-    --shadow-large:0 20px 45px rgba(0,0,0,.45);
+body{
+  font-family:var(--font-main);
+  background:var(--background);
+  color:var(--text);
+  overflow-x:hidden;
+}
 
-    --gold-glow:0 0 25px rgba(252,163,17,.6);
+img{
+  display:block;
+  max-width:100%;
+}
 
+a{
+  color:inherit;
+  text-decoration:none;
+}
 
-    /* Radius */
+ul{
+  list-style:none;
+}
 
-    --radius-sm:10px;
-    --radius-md:18px;
-    --radius-lg:28px;
-    --radius-round:50px;
-
-
-    /* Transition */
-
-    --transition-fast:.25s ease;
-
-    --transition:.35s ease;
-
-    --transition-slow:.6s ease;
-
-
-    /* Font */
-
-    --font:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
-
-
-    /* Navbar */
-
-    --navbar-height:80px;
-
-
-    /* Hero */
-
-    --hero-height:100vh;
-
-
-    /* Section */
-
-    --section-padding:100px;
-
-
-    /* Card */
-
-    --card-width:300px;
-
-
-    /* Z Index */
-
-    --z-loader:99999;
-
-    --z-navbar:999;
-
-    --z-overlay:2;
-
-    --z-content:10;
-
-    --z-particles:1;
-
+button{
+  border:none;
+  cursor:pointer;
+  font:inherit;
 }
