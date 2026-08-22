@@ -1,449 +1,162 @@
-/*=========================================================
-                    HERO SECTION
-=========================================================*/
+/*==================================================
+  HERO.CSS
+==================================================*/
 
 .hero{
-
     position:relative;
-
-    width:100%;
-
-    height:100vh;
-
+    min-height:100vh;
     display:flex;
-
-    justify-content:center;
-
     align-items:center;
-
+    justify-content:center;
     text-align:center;
-
     overflow:hidden;
-
-    background:
-    linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.55)),
-    url("../assets/image/backgrounds/hero-bg.jpg");
-
-    background-size:cover;
-
-    background-position:center;
-
-    background-attachment:fixed;
-
+    padding:120px 8% 80px;
+    background:var(--hero-gradient);
 }
 
-/*======================================
-            DARK OVERLAY
-=======================================*/
-
-.overlay{
-
+/* Overlay */
+.hero .overlay{
     position:absolute;
-
     inset:0;
-
-    background:
-    linear-gradient(
-        to bottom,
-        rgba(0,18,25,.15),
-        rgba(0,18,25,.45),
-        rgba(0,18,25,.85)
+    background:linear-gradient(
+        rgba(0,0,0,.25),
+        rgba(0,0,0,.45)
     );
-
     z-index:1;
-
 }
 
-/*======================================
-            HERO CONTENT
-=======================================*/
-
-.hero-content{
-
-    position:relative;
-
-    z-index:10;
-
-    width:90%;
-
-    max-width:900px;
-
-    animation:fadeUp 1.3s ease;
-
-}
-
-.hero-content h1{
-
-    font-size:5rem;
-
-    color:white;
-
-    font-weight:800;
-
-    line-height:1.2;
-
-    margin-bottom:25px;
-
-    text-shadow:
-    0 0 20px rgba(0,0,0,.5),
-    0 0 35px rgba(252,163,17,.35);
-
-}
-
-.hero-content p{
-
-    font-size:1.3rem;
-
-    color:#f1f1f1;
-
-    margin-bottom:45px;
-
-}
-
-/*======================================
-            BUTTON
-=======================================*/
-
-.start-btn{
-
-    padding:18px 45px;
-
-    font-size:18px;
-
-    border:none;
-
-    border-radius:50px;
-
-    background:#FCA311;
-
-    color:#001219;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.35s;
-
-    box-shadow:
-    0 0 25px rgba(252,163,17,.5);
-
-}
-
-.start-btn:hover{
-
-    transform:translateY(-6px);
-
-    box-shadow:
-    0 10px 30px rgba(252,163,17,.65);
-
-    background:white;
-
-}
-
-/*======================================
-             SUN
-=======================================
-
+/* Decorative Sun */
 .sun{
-
     position:absolute;
-
-    top:70px;
-
-    right:120px;
-
-    width:220px;
-
-    height:220px;
-
+    top:10%;
+    right:10%;
+    width:180px;
+    height:180px;
     border-radius:50%;
-
-    background:radial-gradient(circle,#FFD166,#FDB813,#FCA311);
-
-    filter:blur(6px);
-
-    opacity:.85;
-
-    animation:sunPulse 6s infinite ease-in-out;
-
-}
-*/
-/*======================================
-          COMPASS
-=======================================*/
-
-.compass{
-
-    position:absolute;
-
-    width:600px;
-
-    height:600px;
-
-    background:url("../assets/image/ui/compass.png");
-
-    background-size:contain;
-
-    background-repeat:no-repeat;
-
-    background-position:center;
-
+    background:radial-gradient(circle,#ffd166,#fca311 60%,transparent 75%);
+    filter:blur(2px);
     opacity:.9;
-
-    animation:rotateCompass 60s linear infinite;
-
+    animation:floatSun 6s ease-in-out infinite;
+    z-index:0;
 }
 
-/*======================================
-            CLOUDS
-=======================================*/
+/* Decorative Compass */
+.compass{
+    position:absolute;
+    width:380px;
+    height:380px;
+    border:3px solid rgba(255,255,255,.08);
+    border-radius:50%;
+    left:-100px;
+    bottom:-120px;
+    opacity:.18;
+    animation:spinCompass 40s linear infinite;
+    z-index:0;
+}
+
+.compass::before,
+.compass::after{
+    content:"";
+    position:absolute;
+    inset:50%;
+    transform:translate(-50%,-50%);
+    background:rgba(255,255,255,.08);
+}
+
+.compass::before{
+    width:3px;
+    height:100%;
+}
+
+.compass::after{
+    width:100%;
+    height:3px;
+}
+
+/* Clouds */
 
 .cloud{
-
     position:absolute;
-
-    background:url("../assets/image/backgrounds/clouds.png");
-
-    background-size:contain;
-
-    background-repeat:no-repeat;
-
-    opacity:.45;
-
+    width:220px;
+    height:70px;
+    background:rgba(255,255,255,.12);
+    border-radius:100px;
+    filter:blur(4px);
+    z-index:0;
 }
 
 .cloud1{
-
-    width:340px;
-
-    height:170px;
-
-    top:80px;
-
-    left:-400px;
-
-    animation:cloudMove1 65s linear infinite;
-
+    top:18%;
+    left:-250px;
+    animation:cloudMove1 35s linear infinite;
 }
 
 .cloud2{
-
-    width:260px;
-
-    height:130px;
-
-    top:100px;
-
-    left:-300px;
-
+    top:32%;
+    right:-250px;
     animation:cloudMove2 45s linear infinite;
-
 }
 
-/*======================================
-             WAVES
-=======================================
+/* Hero Content */
 
-.waves{
-
-    position:absolute;
-
-    left:0;
-
-    bottom:0;
-
-    width:400%;
-
-    height:180px;
-
-    background:url("../assets/image/ui/wave.png");
-
-    background-repeat:repeat-x;
-
-    background-size:contain;
-
-    animation:waveMove 20s linear infinite;
-
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:850px;
 }
-*/
-/*======================================
-           ANIMATIONS
-=======================================*/
-
-@keyframes fadeUp{
-
-0%{
-
-opacity:0;
-
-transform:translateY(70px);
-
-}
-
-100%{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
-@keyframes rotateCompass{
-
-from{
-
-transform:rotate(0deg);
-
-}
-
-to{
-
-transform:rotate(360deg);
-
-}
-
-}
-
-@keyframes waveMove{
-
-0%{
-
-transform:translateX(0);
-
-}
-
-100%{
-
-transform:translateX(-50%);
-
-}
-
-}
-
-@keyframes cloudMove1{
-
-0%{
-
-transform:translateX(0);
-
-}
-
-100%{
-
-transform:translateX(1900px);
-
-}
-
-}
-
-@keyframes cloudMove2{
-
-0%{
-
-transform:translateX(0);
-
-}
-
-100%{
-
-transform:translateX(1800px);
-
-}
-
-}
-
-@keyframes sunPulse{
-
-0%{
-
-transform:scale(1);
-
-}
-
-50%{
-
-transform:scale(1.08);
-
-}
-
-100%{
-
-transform:scale(1);
-
-}
-
-}
-
-/*======================================
-           RESPONSIVE
-=======================================*/
-
-@media(max-width:992px){
 
 .hero-content h1{
-
-font-size:3.7rem;
-
+    font-size:clamp(3rem,7vw,5.8rem);
+    color:var(--white);
+    line-height:1.1;
+    margin-bottom:25px;
+    text-shadow:0 8px 25px rgba(0,0,0,.45);
 }
 
 .hero-content p{
-
-font-size:1.1rem;
-
-}
-
-.sun{
-
-width:170px;
-
-height:170px;
-
-}
-
-.compass{
-
-width:450px;
-
-height:450px;
-
-}
-
-}
-
-@media(max-width:768px){
-
-.hero-content h1{
-
-font-size:2.7rem;
-
-}
-
-.hero-content p{
-
-font-size:1rem;
-
+    font-size:1.2rem;
+    color:var(--muted);
+    max-width:700px;
+    margin:0 auto 40px;
 }
 
 .start-btn{
-
-padding:15px 35px;
-
+    display:inline-block;
 }
 
-.sun{
+/* Waves */
 
-display:none;
-
+.waves{
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:120px;
+    background:
+        radial-gradient(circle at 25px 0,#0d3b66 25px,transparent 26px) repeat-x;
+    background-size:60px 60px;
+    opacity:.45;
+    z-index:1;
 }
 
-.compass{
+/* Animations */
 
-width:320px;
-
-height:320px;
-
+@keyframes spinCompass{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
 }
 
+@keyframes floatSun{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+}
+
+@keyframes cloudMove1{
+    from{transform:translateX(0);}
+    to{transform:translateX(calc(100vw + 500px));}
+}
+
+@keyframes cloudMove2{
+    from{transform:translateX(0);}
+    to{transform:translateX(calc(-100vw - 500px));}
 }

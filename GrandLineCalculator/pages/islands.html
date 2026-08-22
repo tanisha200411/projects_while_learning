@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grand Line Islands Atlas | Weather & Log Pose Times</title>
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/cards.css">
+  <link rel="stylesheet" href="../css/calculator.css">
+  <link rel="stylesheet" href="../css/loader.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .island-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .island-card {
+      background: rgba(6, 32, 51, 0.8);
+      border: 1px solid rgba(252, 163, 17, 0.2);
+      border-radius: 16px;
+      padding: 24px;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      backdrop-filter: blur(8px);
+    }
+    .island-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--primary);
+      box-shadow: 0 10px 30px rgba(252, 163, 17, 0.2);
+    }
+    .island-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .island-icon {
+      font-size: 2.2rem;
+    }
+    .island-badge {
+      background: rgba(0, 229, 255, 0.15);
+      color: #00e5ff;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 229, 255, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-content">
+    <div class="skull">☠</div>
+    <h1>Grand Line Islands Atlas</h1>
+    <p>Loading Magnetic Signatures...</p>
+  </div>
+</div>
+
+<header>
+<nav>
+  <div class="logo">☠ Grand Line Navigator</div>
+  <div class="menu-btn">☰</div>
+  <ul>
+    <li><a href="index.html">Home & Calc</a></li>
+    <li><a href="islands.html" class="active">Islands Atlas</a></li>
+    <li><a href="characters.html">Crew Roster</a></li>
+    <li><a href="bounty.html">Bounty Calc</a></li>
+    <li><a href="devil-fruits.html">Devil Fruits</a></li>
+    <li><a href="about.html">About & Lore</a></li>
+  </ul>
+</nav>
+</header>
+
+<section style="padding-top:130px;">
+  <div class="container">
+    <h2>🏝️ Grand Line Islands Atlas & Log Pose Matrix</h2>
+    <p class="text-center" style="color:var(--muted); max-width:700px; margin:0 auto 30px;">Explore climate types, danger ratings, and magnetic lock-on times across Paradise, White-White Sea, and the New World.</p>
+
+    <!-- Filter Buttons -->
+    <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:30px;">
+      <button class="btn-helm" onclick="filterIslands('all')">All Islands</button>
+      <button class="btn-helm" onclick="filterIslands('Paradise')">Paradise</button>
+      <button class="btn-helm" onclick="filterIslands('New World')">New World</button>
+    </div>
+
+    <div class="island-grid" id="islandsAtlasGrid">
+      <!-- Injected via JavaScript -->
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Grand Line Voyage Calculator & Direction Finder</p>
+  <p>Made with ❤️ by Tanisha200411</p>
+</footer>
+
+<script src="../js/navbar.js"></script>
+<script src="../js/loader.js"></script>
+<script>
+let islandsData = [];
+
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const res = await fetch('../data/islands.json');
+    if (res.ok) islandsData = await res.json();
+  } catch (e) {}
+
+  renderIslands(islandsData);
+});
+
+function filterIslands(region) {
+  if (region === 'all') {
+    renderIslands(islandsData);
+  } else {
+    renderIslands(islandsData.filter(i => (i.sea || '').includes(region)));
+  }
+}
+
+function renderIslands(list) {
+  const grid = document.getElementById('islandsAtlasGrid');
+  if (!grid) return;
+
+  grid.innerHTML = '';
+  list.forEach(isl => {
+    let lockStr = "Instant";
+    if (isl.lockTimeHours >= 8760) lockStr = `${(isl.lockTimeHours/8760).toFixed(1)} Year(s)`;
+    else if (isl.lockTimeHours >= 24) lockStr = `${Math.round(isl.lockTimeHours/24)} Day(s)`;
+    else if (isl.lockTimeHours > 0) lockStr = `${isl.lockTimeHours} Hour(s)`;
+
+    const card = document.createElement('div');
+    card.className = 'island-card';
+    card.innerHTML = `
+      <div class="island-header">
+        <span class="island-icon">${isl.icon || '🏝️'}</span>
+        <span class="island-badge">${isl.sea || 'Grand Line'}</span>
+      </div>
+      <h3 style="color:#ffffff; margin-bottom:8px;">${isl.name}</h3>
+      <p style="color:var(--muted); font-size:0.9rem; margin-bottom:12px;">${isl.description}</p>
+      <hr style="border-color:rgba(255,255,255,0.08); margin-bottom:12px;">
+      <p style="font-size:0.85rem; color:#fca311;"><strong>Climate:</strong> ${isl.climate}</p>
+      <p style="font-size:0.85rem; color:#00e5ff;"><strong>Log Pose Lock:</strong> ${lockStr}</p>
+      <p style="font-size:0.85rem; color:#ff2a5f;"><strong>Danger Level:</strong> ${'⭐'.repeat(isl.danger || 3)}</p>
+      <a href="index.html#calculator" class="btn-calc" style="margin-top:16px; padding:10px; font-size:0.85rem; text-align:center;">Calculate Route to ${isl.name.split(' ')[0]}</a>
+    `;
+    grid.appendChild(card);
+  });
+}
+</script>
+</body>
+</html>

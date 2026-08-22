@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devil Fruit Encyclopedia & Berry Valuation | Grand Line Navigator</title>
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/cards.css">
+  <link rel="stylesheet" href="../css/calculator.css">
+  <link rel="stylesheet" href="../css/loader.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .fruit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .fruit-card {
+      background: rgba(6, 32, 51, 0.85);
+      border: 1px solid rgba(0, 229, 255, 0.25);
+      border-radius: 18px;
+      padding: 24px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease;
+    }
+    .fruit-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--primary);
+      box-shadow: 0 10px 30px rgba(0, 229, 255, 0.2);
+    }
+    .fruit-type-badge {
+      background: rgba(255, 42, 95, 0.15);
+      color: #ff2a5f;
+      font-weight: 800;
+      font-size: 0.8rem;
+      padding: 4px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 42, 95, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-content">
+    <div class="skull">☠</div>
+    <h1>Devil Fruit Vault</h1>
+    <p>Cataloging Sea Demon Fruits...</p>
+  </div>
+</div>
+
+<header>
+<nav>
+  <div class="logo">☠ Grand Line Navigator</div>
+  <div class="menu-btn">☰</div>
+  <ul>
+    <li><a href="index.html">Home & Calc</a></li>
+    <li><a href="islands.html">Islands Atlas</a></li>
+    <li><a href="characters.html">Crew Roster</a></li>
+    <li><a href="bounty.html">Bounty Calc</a></li>
+    <li><a href="devil-fruit.html" class="active">Devil Fruits</a></li>
+    <li><a href="about.html">About & Lore</a></li>
+  </ul>
+</nav>
+</header>
+
+<section style="padding-top:130px;">
+  <div class="container">
+    <h2>🍈 Devil Fruit Encyclopedia & Black Market Valuations</h2>
+    <p class="text-center" style="color:var(--muted); max-width:700px; margin:0 auto 30px;">Explore Paramecia, Zoan, Mythical Zoan, and Logia fruits with market values in Berries ฿!</p>
+
+    <!-- Berry Valuation Calculator -->
+    <div class="calc-card" style="max-width:800px; margin:0 auto 40px;">
+      <h3 class="calc-title">💰 Berry ฿ Currency & Treasure Converter</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="berryAmount">Berry Amount (฿)</label>
+          <input type="number" id="berryAmount" class="form-control" value="100000000">
+        </div>
+        <div class="form-group">
+          <label for="currencyTarget">Convert To</label>
+          <select id="currencyTarget" class="form-select">
+            <option value="usd">USD ($)</option>
+            <option value="eur">EUR (€)</option>
+            <option value="jpy">JPY (¥)</option>
+            <option value="gold">Gold Bullion Bars (kg)</option>
+          </select>
+        </div>
+      </div>
+      <button type="button" id="convertBerryBtn" class="btn-calc">🔄 Convert Currency</button>
+
+      <div class="direction-highlight" id="convertResultBox" style="margin-top:16px; display:none;">
+        <h4>Converted Value:</h4>
+        <div class="vector-text" id="convertResultVal" style="color:#00e5ff;">$ 1,000,000</div>
+      </div>
+    </div>
+
+    <div class="fruit-grid" id="fruitGrid">
+      <!-- Injected via JavaScript -->
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Grand Line Voyage Calculator & Direction Finder</p>
+  <p>Made with ❤️ by Tanisha200411</p>
+</footer>
+
+<script src="../js/navbar.js"></script>
+<script src="../js/loader.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  let fruits = [];
+  try {
+    const res = await fetch('../data/fruits.json');
+    if (res.ok) fruits = await res.json();
+  } catch (e) {}
+
+  const grid = document.getElementById('fruitGrid');
+  if (grid) {
+    grid.innerHTML = '';
+    fruits.forEach(f => {
+      const card = document.createElement('div');
+      card.className = 'fruit-card';
+      card.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+          <h3 style="color:#ffffff; font-size:1.2rem;">${f.name}</h3>
+          <span class="fruit-type-badge">${f.type}</span>
+        </div>
+        <p style="color:var(--muted); font-size:0.9rem; margin-bottom:12px;">${f.description}</p>
+        <p style="color:#e9ecef; font-size:0.85rem;"><strong>Known User:</strong> ${f.user}</p>
+        <p style="color:#fca311; font-weight:800; font-size:1.1rem; margin-top:10px;">Market Value: ฿ ${f.valueBerries.toLocaleString()}</p>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  // Currency Converter
+  document.getElementById('convertBerryBtn')?.addEventListener('click', () => {
+    const b = parseFloat(document.getElementById('berryAmount').value) || 0;
+    const target = document.getElementById('currencyTarget').value;
+    let res = "";
+
+    // 1 Berry ≈ 0.01 USD (100 Berries ≈ $1)
+    if (target === 'usd') res = `$ ${(b * 0.01).toLocaleString('en-US', {maximumFractionDigits:2})}`;
+    if (target === 'eur') res = `€ ${(b * 0.0092).toLocaleString('en-US', {maximumFractionDigits:2})}`;
+    if (target === 'jpy') res = `¥ ${(b * 1.5).toLocaleString('en-US', {maximumFractionDigits:2})}`;
+    if (target === 'gold') res = `${(b * 0.00015).toFixed(2)} kg Gold`;
+
+    const box = document.getElementById('convertResultBox');
+    const val = document.getElementById('convertResultVal');
+    if (box && val) {
+      val.innerText = res;
+      box.style.display = 'block';
+    }
+  });
+});
+</script>
+</body>
+</html>

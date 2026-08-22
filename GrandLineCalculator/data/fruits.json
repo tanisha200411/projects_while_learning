@@ -1,0 +1,74 @@
+[
+  {
+    "id": "nika",
+    "name": "Hito Hito no Mi, Model: Nika",
+    "type": "Mythical Zoan",
+    "user": "Monkey D. Luffy",
+    "bountyMultiplier": 2.5,
+    "valueBerries": 5000000000,
+    "description": "Grants the user's body rubber properties and the freedom to fight however they can imagine, unleashing Sun God Nika."
+  },
+  {
+    "id": "mera",
+    "name": "Mera Mera no Mi (Flame-Flame)",
+    "type": "Logia",
+    "user": "Sabo (formerly Portgas D. Ace)",
+    "bountyMultiplier": 1.9,
+    "valueBerries": 3000000000,
+    "description": "Allows the user to create, control, and transform into fire at will."
+  },
+  {
+    "id": "gura",
+    "name": "Gura Gura no Mi (Tremor-Tremor)",
+    "type": "Paramecia",
+    "user": "Marshall D. Teach (formerly Whitebeard)",
+    "bountyMultiplier": 2.2,
+    "valueBerries": 4500000000,
+    "description": "Allows the user to create devastating sea quakes and shockwaves capable of destroying the world."
+  },
+  {
+    "id": "ope",
+    "name": "Ope Ope no Mi (Op-Op Fruit)",
+    "type": "Paramecia",
+    "user": "Trafalgar D. Water Law",
+    "bountyMultiplier": 2.4,
+    "valueBerries": 5000000000,
+    "description": "Allows the user to create a spherical realm ('ROOM') where they can manipulate anything, grant eternal youth, or perform miracle operations."
+  },
+  {
+    "id": "pika",
+    "name": "Pika Pika no Mi (Glint-Glint)",
+    "type": "Logia",
+    "user": "Kizaru (Borsalino)",
+    "bountyMultiplier": 2.0,
+    "valueBerries": 3500000000,
+    "description": "Allows the user to travel at the speed of light, project laser beams, and create light swords."
+  },
+  {
+    "id": "uouo",
+    "name": "Uo Uo no Mi, Model: Seiryu",
+    "type": "Mythical Zoan",
+    "user": "Kaido",
+    "bountyMultiplier": 2.6,
+    "valueBerries": 4800000000,
+    "description": "Allows the user to transform into a massive Azure Dragon capable of breathing fire and lifting islands with flame clouds."
+  },
+  {
+    "id": "hana",
+    "name": "Hana Hana no Mi (Flower-Flower)",
+    "type": "Paramecia",
+    "user": "Nico Robin",
+    "bountyMultiplier": 1.6,
+    "valueBerries": 1500000000,
+    "description": "Allows the user to sprout duplicates of their body parts on any surface within line of sight."
+  },
+  {
+    "id": "yomi",
+    "name": "Yomi Yomi no Mi (Revive-Revive)",
+    "type": "Paramecia",
+    "user": "Brook",
+    "bountyMultiplier": 1.4,
+    "valueBerries": 1000000000,
+    "description": "Grants the user a second life after death and the ability to project their soul outside their body with underworld chill."
+  }
+]

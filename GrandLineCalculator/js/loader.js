@@ -1,11 +1,20 @@
-window.addEventListener("load",()=>{
+/*==================================================
+  LOADER.JS
+==================================================*/
 
-const loader=document.getElementById("loader");
+function hideLoader() {
+  const loader = document.getElementById("loader");
+  if (loader) {
+    loader.classList.add("hidden");
+    loader.classList.add("loader-hide");
+    setTimeout(() => {
+      loader.style.display = "none";
+    }, 500);
+  }
+}
 
-setTimeout(()=>{
+window.addEventListener("DOMContentLoaded", hideLoader);
+window.addEventListener("load", hideLoader);
 
-loader.classList.add("loader-hide");
-
-},2000);
-
-});
+// Fallback safety timeout in case load event fires early or late
+setTimeout(hideLoader, 300);

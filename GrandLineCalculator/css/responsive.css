@@ -1,0 +1,130 @@
+/*==================================================
+  RESPONSIVE.CSS
+==================================================*/
+
+/* ---------- Large Tablets ---------- */
+@media (max-width: 1024px){
+
+    section{
+        padding:80px 6%;
+    }
+
+    .hero-content h1{
+        font-size:4rem;
+    }
+
+    .cards{
+        grid-template-columns:repeat(2,minmax(240px,1fr));
+    }
+
+}
+
+/* ---------- Tablets ---------- */
+@media (max-width:768px){
+
+    section{
+        padding:70px 5%;
+    }
+
+    .hero{
+        min-height:90vh;
+        padding-top:110px;
+    }
+
+    .hero-content h1{
+        font-size:3rem;
+    }
+
+    .hero-content p{
+        font-size:1rem;
+    }
+
+    .start-btn{
+        padding:12px 28px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+        gap:22px;
+    }
+
+    .sun{
+        width:120px;
+        height:120px;
+    }
+
+    .compass{
+        width:260px;
+        height:260px;
+    }
+
+    .cloud{
+        display:none;
+    }
+
+    footer{
+        padding:28px 16px;
+    }
+}
+
+/* ---------- Phones ---------- */
+@media (max-width:480px){
+
+    section{
+        padding:60px 20px;
+    }
+
+    .hero-content h1{
+        font-size:2.3rem;
+    }
+
+    .hero-content p{
+        font-size:.95rem;
+    }
+
+    .logo{
+        font-size:1.25rem;
+    }
+
+    .card img{
+        height:240px;
+    }
+
+    .card h3{
+        font-size:1.2rem;
+    }
+
+    .card p{
+        font-size:.95rem;
+    }
+
+    .card span{
+        font-size:.8rem;
+        padding:6px 14px;
+    }
+
+    .start-btn{
+        width:100%;
+        text-align:center;
+    }
+
+    footer p{
+        font-size:.9rem;
+    }
+}
+
+/* ---------- Small Phones ---------- */
+@media (max-width:360px){
+
+    .hero-content h1{
+        font-size:2rem;
+    }
+
+    .logo{
+        font-size:1.1rem;
+    }
+
+    .menu-btn{
+        font-size:1.7rem;
+    }
+}

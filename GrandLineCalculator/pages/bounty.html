@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pirate Crew Bounty & Marine Threat Calculator</title>
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/cards.css">
+  <link rel="stylesheet" href="../css/calculator.css">
+  <link rel="stylesheet" href="../css/bounty.css">
+  <link rel="stylesheet" href="../css/loader.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .crew-chk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .chk-label {
+      background: rgba(0, 18, 25, 0.8);
+      border: 1px solid rgba(252, 163, 17, 0.3);
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-content">
+    <div class="skull">☠</div>
+    <h1>Marine Bounty Headquarters</h1>
+    <p>Retrieving World Government Wanted Files...</p>
+  </div>
+</div>
+
+<header>
+<nav>
+  <div class="logo">☠ Grand Line Navigator</div>
+  <div class="menu-btn">☰</div>
+  <ul>
+    <li><a href="index.html">Home & Calc</a></li>
+    <li><a href="islands.html">Islands Atlas</a></li>
+    <li><a href="characters.html">Crew Roster</a></li>
+    <li><a href="bounty.html" class="active">Bounty Calc</a></li>
+    <li><a href="devil-fruits.html">Devil Fruits</a></li>
+    <li><a href="about.html">About & Lore</a></li>
+  </ul>
+</nav>
+</header>
+
+<section style="padding-top:130px;">
+  <div class="container">
+    <h2>💰 Bounty & Marine Threat Level Calculator</h2>
+    <p class="text-center" style="color:var(--muted); max-width:700px; margin:0 auto 30px;">Assemble your pirate crew, configure Haki levels & Devil Fruits, and calculate your total bounty and Marine Admiral dispatch risk!</p>
+
+    <div class="calc-grid">
+      <!-- Bounty Calculator -->
+      <div class="calc-card">
+        <h3 class="calc-title">🏴‍☠️ Crew Assembly & Threat Factors</h3>
+
+        <form id="bountyForm">
+          <label style="color:var(--primary); font-size:0.9rem; font-weight:700;">Select Crew Members:</label>
+          <div class="crew-chk-grid">
+            <label class="chk-label"><input type="checkbox" id="chkLuffy" checked> Luffy</label>
+            <label class="chk-label"><input type="checkbox" id="chkZoro" checked> Zoro</label>
+            <label class="chk-label"><input type="checkbox" id="chkSanji" checked> Sanji</label>
+            <label class="chk-label"><input type="checkbox" id="chkJinbe" checked> Jinbe</label>
+            <label class="chk-label"><input type="checkbox" id="chkRobin" checked> Robin</label>
+            <label class="chk-label"><input type="checkbox" id="chkUsopp" checked> Usopp</label>
+            <label class="chk-label"><input type="checkbox" id="chkFranky" checked> Franky</label>
+            <label class="chk-label"><input type="checkbox" id="chkBrook" checked> Brook</label>
+            <label class="chk-label"><input type="checkbox" id="chkNami" checked> Nami</label>
+            <label class="chk-label"><input type="checkbox" id="chkChopper" checked> Chopper</label>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="hakiMultiplier">Haki Mastery Multiplier</label>
+              <select id="hakiMultiplier" class="form-select">
+                <option value="1.0">Basic Armament / Observation (1.0x)</option>
+                <option value="1.5">Advanced Conqueror's Haki (1.5x)</option>
+                <option value="2.0">Awakened Haki Master (2.0x)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="fruitCount">Extra Devil Fruit Users</label>
+              <input type="number" id="fruitCount" class="form-control" value="1" min="0" max="10">
+            </div>
+          </div>
+
+          <button type="button" id="calcBountyBtn" class="btn-calc">💰 Calculate Total Crew Bounty</button>
+        </form>
+
+        <div class="results-card" id="bountyResults" style="margin-top:20px; display:none;">
+          <div class="result-header">
+            <h3>📜 World Government Bounties</h3>
+          </div>
+          <div class="result-metrics">
+            <div class="metric-item">
+              <div class="metric-val" id="totalBountyVal" style="color:#fca311;">฿ 0</div>
+              <div class="metric-lbl">Total Crew Bounty</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-val" id="threatRankVal" style="color:#00e5ff;">D Rank</div>
+              <div class="metric-lbl">Pirate Rank</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-val" id="admiralRiskVal" style="color:#ff2a5f;">0%</div>
+              <div class="metric-lbl">Admiral Dispatch Risk</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wanted Poster Generator -->
+      <div class="calc-card">
+        <h3 class="calc-title">📜 Wanted Poster Generator</h3>
+        <p class="calc-subtitle">Design your own official World Government Wanted Poster!</p>
+
+        <div class="form-group">
+          <label for="posterName">Pirate Name</label>
+          <input type="text" id="posterName" class="form-control" value="MONKEY D. LUFFY">
+        </div>
+        <div class="form-group">
+          <label for="posterBountyVal">Bounty (Berries ฿)</label>
+          <input type="number" id="posterBountyVal" class="form-control" value="3000000000">
+        </div>
+        <div class="form-group">
+          <label for="posterCondition">Condition</label>
+          <select id="posterCondition" class="form-select">
+            <option value="DEAD OR ALIVE">DEAD OR ALIVE</option>
+            <option value="ONLY ALIVE">ONLY ALIVE (Vinsmoke Special)</option>
+          </select>
+        </div>
+        <button type="button" id="generatePosterBtn" class="btn-calc">✨ Update Wanted Poster</button>
+
+        <!-- Preview Poster -->
+        <div style="margin-top:24px; display:flex; justify-content:center;">
+          <div class="poster-front" style="width:250px; height:370px; box-shadow:0 12px 30px rgba(0,0,0,0.6); padding:10px;">
+            <h3 style="font-size:1.5rem; letter-spacing:1px; margin:5px 0;">WANTED</h3>
+            <img src="../assets/image/crew/luffy.jpg" alt="Poster Image" style="height:180px; width:90%; object-fit:cover; border:3px solid #8b6b34;">
+            <h4 id="displayPosterName" style="font-size:1rem; margin:8px 0 2px;">MONKEY D. LUFFY</h4>
+            <p id="displayPosterCondition" style="font-size:0.75rem; font-weight:800; color:#8b0000;">DEAD OR ALIVE</p>
+            <div id="displayPosterBounty" class="bounty" style="font-size:1.1rem; color:#000; font-weight:900; margin-bottom:5px;">฿ 3,000,000,000-</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Grand Line Voyage Calculator & Direction Finder</p>
+  <p>Made with ❤️ by Tanisha200411</p>
+</footer>
+
+<script src="../js/audio.js"></script>
+<script src="../js/navbar.js"></script>
+<script src="../js/bounty-calc.js"></script>
+<script src="../js/math-calc.js"></script>
+<script src="../js/loader.js"></script>
+</body>
+</html>
